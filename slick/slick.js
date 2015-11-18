@@ -51,6 +51,7 @@
                 centerMode: false,
                 centerPadding: '50px',
                 cssEase: 'ease',
+                currentClass: 'slick-current',
                 customPaging: function(slider, i) {
                     return '<button type="button" data-role="none" role="button" aria-required="false" tabindex="0">' + (i + 1) + '</button>';
                 },
@@ -858,7 +859,7 @@
         if (_.$slides) {
 
             _.$slides
-                .removeClass('slick-slide slick-active slick-center slick-visible slick-current')
+                .removeClass('slick-slide slick-active slick-center slick-visible ' + _.options.currentClass)
                 .removeAttr('aria-hidden')
                 .removeAttr('data-slick-index')
                 .each(function(){
@@ -1921,12 +1922,12 @@
 
         allSlides = _.$slider
             .find('.slick-slide')
-            .removeClass('slick-active slick-center slick-current')
+            .removeClass('slick-active slick-center ' + _.options.currentClass)
             .attr('aria-hidden', 'true');
 
         _.$slides
             .eq(index)
-            .addClass('slick-current');
+            .addClass(_.options.currentClass);
 
         if (_.options.centerMode === true) {
 
@@ -2484,7 +2485,7 @@
         }
 
         _.$slides
-            .removeClass('slick-slide slick-active slick-visible slick-current')
+            .removeClass('slick-slide slick-active slick-visible ' + _.options.currentClass)
             .attr('aria-hidden', 'true')
             .css('width', '');
 
