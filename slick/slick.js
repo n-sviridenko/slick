@@ -64,6 +64,7 @@
                 infinite: true,
                 initialSlide: 0,
                 lazyLoad: 'ondemand',
+                listClass: 'slick-list',
                 mobileFirst: false,
                 pauseOnHover: true,
                 pauseOnDotsHover: false,
@@ -80,6 +81,7 @@
                 swipeToSlide: false,
                 touchMove: true,
                 touchThreshold: 5,
+                trackClass: 'slick-track',
                 useCSS: true,
                 useTransform: false,
                 variableWidth: false,
@@ -504,11 +506,11 @@
         _.$slider.addClass('slick-slider');
 
         _.$slideTrack = (_.slideCount === 0) ?
-            $('<div class="slick-track"/>').appendTo(_.$slider) :
-            _.$slides.wrapAll('<div class="slick-track"/>').parent();
+            $('<div class="' + _.options.trackClass + '"/>').appendTo(_.$slider) :
+            _.$slides.wrapAll('<div class="' + _.options.trackClass + '"/>').parent();
 
         _.$list = _.$slideTrack.wrap(
-            '<div aria-live="polite" class="slick-list"/>').parent();
+            '<div aria-live="polite" class="' + _.options.listClass + '"/>').parent();
         _.$slideTrack.css('opacity', 0);
 
         if (_.options.centerMode === true || _.options.swipeToSlide === true) {
